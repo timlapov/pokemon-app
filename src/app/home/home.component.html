@@ -1,0 +1,63 @@
+<div class="container-fluid p-0">
+  <!-- Carousel and Pokedex Button -->
+  <div class="container mt-4">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-8">
+        <div id="pokemonCarousel" class="carousel slide shadow" style="height: 250px;" data-bs-ride="carousel">
+          <div class="carousel-inner h-100">
+            <div class="carousel-item active h-100">
+              <img src="https://th.bing.com/th/id/OIG2.4a_xlS6jRs7Unvcf_mhZ?pid=ImgGn" class="d-block w-100 h-100" style="object-fit: cover; object-position: center bottom;" alt="Pokemon 1">
+            </div>
+            <div class="carousel-item h-100">
+              <img src="https://th.bing.com/th/id/OIG2.VT29NUEZ1NEhXR8qupvd?pid=ImgGn" class="d-block w-100 h-100" style="object-fit: cover; object-position: center bottom;" alt="Pokemon 2">
+            </div>
+            <div class="carousel-item h-100">
+              <img src="https://th.bing.com/th/id/OIG2.xeUqEnPV6MPjp8XHriVB?pid=ImgGn" class="d-block w-100 h-100" style="object-fit: cover; object-position: center bottom;" alt="Pokemon 3">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#pokemonCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#pokemonCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-1">
+        <button routerLink="/pokedex" class="btn p-0 pokedex-btn" style="height: 250px; width: 100%;">
+          <img src="pokedex.png" alt="Pokedex" class="img-fluid" style="height: 100%; width: 100%; object-fit: contain;">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pokemon Cards -->
+  <!-- <div class="container mt-4">
+    <h2 class="mb-3 text-center">Pokemons by type</h2>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col" *ngFor="let pokemon of pokemons">
+        <div class="card h-100">
+          <img [src]="pokemon.sprites.regular" class="card-img-top" [alt]="pokemon.name.fr">
+          <div class="card-body">
+            <h5 class="card-title">{{ pokemon.name.fr }}</h5>
+            <p class="card-text">ID: {{ pokemon.pokedex_id }}</p>
+            <div class="d-flex justify-content-start mb-2">
+              <img *ngFor="let type of pokemon.types" [src]="type.image" [alt]="type.name" class="me-2" style="width: 30px; height: 30px;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div class="container">
+    <div class="card" *ngFor="let type of types">
+      <p>{{ type.name }}</p>
+    </div>
+  </div> -->
+
+  <!-- List Pokemon Component -->
+  <app-list-pokemon *ngIf="pokemons.length" [pokemonsForList]="pokemons"></app-list-pokemon>
+</div>

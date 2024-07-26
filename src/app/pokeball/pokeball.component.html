@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <button class="btn" (mouseenter)="openPokeball()" (mouseleave)="closePokeball()">
+<img src="{{isOpen ? 'pokeball-opened.png' : 'pokeball-locked.png'}}" alt="pokeball">
+  </button>
+</div>
+
+<div class="pokemon-card">
+  <div class="card-inner">
+    <div class="card-front">
+      <div class="card-frame">
+        <h2 class="pokemon-name">{{pokemon?.name?.en}}</h2>
+        <img src="{{pokemon?.sprites?.regular}}" alt="{{pokemon?.name?.en}}" class="pokemon-image">
+        <div class="pokemon-types">
+          <span *ngFor="let type of pokemon?.types" class="type-badge" [style.background-image]="'url(' + type.image + ')'">
+            {{type.name}}
+          </span>
+        </div>
+        <div class="pokemon-stats">
+          <div class="stat" *ngFor="let stat of ['hp', 'atk', 'def', 'spe_atk', 'spe_def', 'vit']">
+            <span class="stat-name">{{ stat }}</span>
+<!--            <span class="stat-value">{{ pokemon?.stats[stat] }}</span>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

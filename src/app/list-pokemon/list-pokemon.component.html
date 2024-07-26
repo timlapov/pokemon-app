@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <h2 class="mb-3 text-center">Twenty random pokémons</h2>
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    <div class="col" *ngFor="let pokemon of twentyPokemons">
+      <div class="card bg-light">
+        <img [src]="pokemon.sprites.regular" class="card-img-top" [alt]="pokemon.name.fr">
+        <div class="card-body">
+          <h5 class="card-title">{{ pokemon.name.fr }}</h5>
+          <p class="card-text">Pokedex ID: {{ pokemon.pokedex_id }}</p>
+          <div class="d-flex justify-content-start mb-2">
+            <img *ngFor="let type of pokemon.types" [src]="type.image" [alt]="type.name" class="me-2" style="width: 30px; height: 30px;">
+          </div>
+          <div class="btn-group">
+            <a class="btn btn-outline-danger btn-sm" routerLink="pokemon/{{ pokemon.pokedex_id }}">Delete</a>
+            <a class="btn btn-outline-secondary btn-sm" routerLink="pokemon/{{ pokemon.pokedex_id }}">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

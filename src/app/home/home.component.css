@@ -1,0 +1,9 @@
+.pokedex-btn {
+  transition: filter 0.3s ease-in-out;
+  filter: grayscale(100%);
+}
+
+.pokedex-btn:hover {
+  filter: grayscale(0%);
+}
+

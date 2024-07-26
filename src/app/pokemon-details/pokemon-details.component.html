@@ -1,0 +1,32 @@
+<div class="container-fluid p-1">
+  <a routerLink="/" class="btn btn-outline-info w-100 mb-3">← Home</a>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <img [src]="pokemon?.sprites?.regular" class="img-fluid" [alt]="pokemon?.name?.fr">
+    </div>
+    <div class="col-md-6">
+      <p><strong>ID:</strong> {{ pokemon?.pokedex_id }}</p>
+      <p><strong>Name (FR):</strong> {{ pokemon?.name?.fr }}</p>
+      <p><strong>Types:</strong></p>
+      <div class="d-flex mb-2">
+        <img *ngFor="let type of pokemon?.types" [src]="type.image" [alt]="type?.name" class="me-2" style="width: 30px; height: 30px;">
+      </div>
+      <p><strong>Talents:</strong></p>
+      <ul>
+        <li *ngFor="let talent of pokemon?.talents">{{ talent.name }} ({{ talent.tc ? 'Hidden' : 'Regular' }})</li>
+      </ul>
+      <p><strong>Stats:</strong></p>
+      <ul>
+        <li>HP: {{ pokemon?.stats?.hp }}</li>
+        <li>Attack: {{ pokemon?.stats?.atk }}</li>
+        <li>Defense: {{ pokemon?.stats?.def }}</li>
+        <li>Sp. Attack: {{ pokemon?.stats?.spe_atk }}</li>
+        <li>Sp. Defense: {{ pokemon?.stats?.spe_def }}</li>
+        <li>Speed: {{ pokemon?.stats?.vit }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
