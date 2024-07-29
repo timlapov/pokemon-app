@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, inject, Input, OnInit} from '@angular/core';
 import {IPokemon} from "../../services/entities";
 import {CommonModule} from "@angular/common";
 import {RouterLink} from "@angular/router";
+import {PokemonService} from "../../services/pokemon.service";
 
 @Component({
   selector: 'app-list-pokemon',
@@ -12,8 +13,10 @@ import {RouterLink} from "@angular/router";
 })
 export class ListPokemonComponent implements OnInit {
   @Input() pokemonsForList: IPokemon[] = [];
+  service = inject(PokemonService);
 
   twentyPokemons: IPokemon[] = [];
+  pokedex: number[] = [];
 
   ngOnInit() {
     if (this.pokemonsForList.length > 1) {
@@ -26,7 +29,8 @@ export class ListPokemonComponent implements OnInit {
     return shuffled.slice(0, Math.min(count, pokemons.length));
   }
 
-  showDetails(pokemon: IPokemon) {
 
+  addPokemonIdToPokedex(id: number): void {
+    this.pokedex.push(id);
   }
 }

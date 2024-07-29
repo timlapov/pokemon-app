@@ -11,7 +11,7 @@
             <img *ngFor="let type of pokemon.types" [src]="type.image" [alt]="type.name" class="me-2" style="width: 30px; height: 30px;">
           </div>
           <div class="btn-group">
-            <a class="btn btn-outline-danger btn-sm" routerLink="pokemon/{{ pokemon.pokedex_id }}">Delete</a>
+            <a class="btn btn-outline-warning btn-sm" (click)="addPokemonIdToPokedex(pokemon.pokedex_id)">+</a>
             <a class="btn btn-outline-secondary btn-sm" routerLink="pokemon/{{ pokemon.pokedex_id }}">View Details</a>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IPokemon } from './entities';
 import {HttpClient} from "@angular/common/http";
-import {map, Observable} from "rxjs";
+import {map, Observable, toArray} from "rxjs";
 import { IPokemonType } from './entities';
 
 @Injectable({
@@ -15,6 +15,17 @@ export class PokemonService {
   }
   getPokemonById(id: number) {
     return this.http.get<IPokemon>(`${this.url}/${id}`);
+  }
+  getThreePokemonByType(typeName: string): Observable<IPokemon[]> {
+    return this.getAll().pipe(
+      map(pokemons => pokemons
+        .filter(pokemon => pokemon.types && Array.isArray(pokemon.types))  // Проверяем, что types существует и является массивом
+        .filter(pokemon =>
+          pokemon.types.some(type => type.name.toLowerCase() === typeName.toLowerCase())
+        )
+        .slice(0, 3)
+      )
+    );
   }
 
   // getAllTypes(): Observable<IPokemonType[]> {

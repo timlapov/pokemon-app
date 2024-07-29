@@ -1,9 +1,12 @@
-<div class="container-fluid">
-  <button class="btn" (mouseenter)="openPokeball()" (mouseleave)="closePokeball()">
-<img src="{{isOpen ? 'pokeball-opened.png' : 'pokeball-locked.png'}}" alt="pokeball">
-  </button>
-</div>
+<!--<div class="container-fluid">-->
+<!--  <button class="btn" (mouseenter)="openPokeball()" (mouseleave)="closePokeball()">-->
+<!--<img src="{{isOpen ? 'pokeball-opened.png' : 'pokeball-locked.png'}}" alt="pokeball">-->
+<!--  </button>-->
+<!--</div>-->
 
+<div class="container p-0 m-0">
+<div class="row g-1 justify-content-center">
+  @for (pokemon of pokemons; track pokemon.pokedex_id) {
 <div class="pokemon-card">
   <div class="card-inner">
     <div class="card-front">
@@ -24,4 +27,7 @@
       </div>
     </div>
   </div>
+</div>
+  }
+</div>
 </div>

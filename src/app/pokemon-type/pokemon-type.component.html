@@ -1,0 +1,33 @@
+<div class="container mt-4">
+  @for (type of types; track type) {
+    <div class="card mb-4 type-card">
+      <div class="card-header">
+        <h2 class="mb-0 text-center">{{ type }}</h2>
+      </div>
+      <div class="card-body">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          @for (pokemon of pokemonsByType[type] | async; track pokemon.pokedex_id) {
+            <div class="col">
+              <div class="card h-100 bg-light">
+                <img [src]="pokemon.sprites.regular" class="card-img-top" [alt]="pokemon.name.fr">
+                <div class="card-body">
+                  <h5 class="card-title">{{ pokemon.name.fr }}</h5>
+                  <p class="card-text">Pokedex ID: {{ pokemon.pokedex_id }}</p>
+                  <div class="d-flex justify-content-start mb-2">
+                    @for (pokemonType of pokemon.types; track pokemonType) {
+                      <img [src]="pokemonType.image" [alt]="pokemonType.name" class="me-2" style="width: 30px; height: 30px;">
+                    }
+                  </div>
+                  <div class="btn-group">
+                    <a class="btn btn-outline-warning btn-sm" routerLink="/pokemon/{{ pokemon.pokedex_id }}">+</a>
+                    <a class="btn btn-outline-secondary btn-sm" routerLink="/pokemon/{{ pokemon.pokedex_id }}">View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  }
+</div>

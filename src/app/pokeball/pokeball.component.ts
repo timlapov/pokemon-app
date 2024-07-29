@@ -12,8 +12,9 @@ import {PokemonService} from "../../services/pokemon.service";
 })
 export class PokeballComponent implements OnInit {
   //@Input() pokemon!: IPokemon;
+  pokemonIds: number[] = [1, 2, 3];
   service = inject(PokemonService);
-  pokemon:IPokemon | undefined;
+  pokemons:IPokemon[] | undefined =[];
 
   isOpen = false;
 
@@ -24,6 +25,9 @@ export class PokeballComponent implements OnInit {
     this.isOpen = false;
   }
   ngOnInit() {
-    this.service.getPokemonById(2).subscribe(pokemon => this.pokemon = pokemon);
+    for (let i= 1; i < this.pokemonIds.length + 1; i++) {
+      this.service.getPokemonById(i).subscribe(pokemon => this.pokemons?.push(pokemon));
+      console.log(this.pokemons);
+    }
   }
 }
