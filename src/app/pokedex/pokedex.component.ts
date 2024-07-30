@@ -2,7 +2,8 @@ import {Component, inject, Input, OnInit} from '@angular/core';
 import {IPokemon} from "../../services/entities";
 import {CommonModule} from "@angular/common";
 import {PokemonService} from "../../services/pokemon.service";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
+import {PokedexService} from "../../services/pokedex.service";
 
 @Component({
   selector: 'app-pokedex',
@@ -13,11 +14,14 @@ import {RouterLink} from "@angular/router";
 })
 export class PokedexComponent implements OnInit {
   //@Input() pokemon!: IPokemon;
-  pokemonIds: number[] = [1, 2, 3];
+  pokedex: number[] = [];
   service = inject(PokemonService);
+  servicePokedex = inject(PokedexService);
   pokemons:IPokemon[] | undefined =[];
 
   isOpen = false;
+
+  constructor(private router: Router) { }
 
   openPokeball() {
     this.isOpen = true;
@@ -26,8 +30,9 @@ export class PokedexComponent implements OnInit {
     this.isOpen = false;
   }
   ngOnInit() {
-    for (let i= 1; i < this.pokemonIds.length + 1; i++) {
-      this.service.getPokemonById(i).subscribe(pokemon => this.pokemons?.push(pokemon));
+    this.pokedex = this.servicePokedex.getPokedex();
+    for (let i = 0; i < this.pokedex.length; i++) {
+      this.service.getPokemonById(this.pokedex[i]).subscribe(pokemon => this.pokemons?.push(pokemon));
       console.log(this.pokemons);
     }
   }

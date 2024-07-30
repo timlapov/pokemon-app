@@ -3,12 +3,13 @@ import { IPokemon } from './entities';
 import {HttpClient} from "@angular/common/http";
 import {map, Observable, toArray} from "rxjs";
 import { IPokemonType } from './entities';
+import {environment} from "../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
-  url = 'https://tyradex.tech/api/v1/pokemon';
+  url = environment.apiURL;
   constructor( private http: HttpClient ) { }
   getAll() {
     return this.http.get<IPokemon[]>(this.url);
